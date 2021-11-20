@@ -1,0 +1,25 @@
+image: $CI_DEPENDENCY_PROXY_GROUP_IMAGE_PREFIX/alpine:edge
+
+stages:
+  - lint
+  - build
+
+services:
+  - name: docker:dind
+    alias: docker
+
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  PUBLISH_ARTIFACT_TO_RHQCR: "true"
+
+gitpod-ws:build:
+  stage: build
+  # Ensure Docker CLI isistalled first, among other things.
+  before_script:
+    - apk add docker bash coreutils
+    - docker login quay.io --username $RECAPTIMEDOTDEV_RHQCR_USERNAME --password RECAPTIMEDOTDEV_RHQCR_PASSWORD
+  script:
+    - ./run build-gp-image
+  rules:
+    - changes:
+        - .gitpod.Dockerfile
