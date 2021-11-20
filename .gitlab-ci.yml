@@ -17,7 +17,7 @@ gitpod-ws:build:
   # Ensure Docker CLI isistalled first, among other things.
   before_script:
     - apk add docker bash coreutils
-    - docker login quay.io --username $RECAPTIMEDOTDEV_RHQCR_USERNAME --password RECAPTIMEDOTDEV_RHQCR_PASSWORD
+    - docker login quay.io --username $RECAPTIMEDOTDEV_RHQCR_USERNAME --password $RECAPTIMEDOTDEV_RHQCR_PASSWORD
   script:
     - ./run build-gp-image
   rules:
