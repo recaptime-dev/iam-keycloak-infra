@@ -2,7 +2,10 @@ FROM gitpod/workspace-full
 
 RUN brew update; \
     brew upgrade; \
-    brew install shellcheck hadolint kubectl okteto railwayapp/railway/railway direnv; \
+    # Don't forget to add Kompose for future stuff, particularly our slow migration to Kubernetes from Docker Compose
+    # in the future
+    # Docs: https://kubernetes.io/docs/tasks/configure-pod-container/translate-compose-kubernetes/
+    brew install shellcheck hadolint kubectl okteto railwayapp/railway/railway direnv kompose; \
     direnv hook bash >> ~/.bashrc.d/02-direnv.bashrc
 
 # The URL for the armored GPG key for our Releases Key is same as https://madebythepinshub.gitlab.io/ppa/releases-key.gpg
