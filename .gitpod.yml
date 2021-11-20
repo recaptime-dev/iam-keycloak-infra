@@ -6,6 +6,10 @@ vscode:
     - ms-kubernetes-tools.vscode-kubernetes-tools
     - ipedrazas.kubernetes-snippets
 tasks:
-  - name: Login with Okteto
-    before: ./run okteto-login || true
+  - name: Init scripts
+    init: direnv allow
+    before: |
+      direnv allow
+      direnv reload
+      ./run okteto-login || true
     command: exit 0
