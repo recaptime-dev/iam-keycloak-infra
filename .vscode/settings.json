@@ -1,0 +1,8 @@
+{
+    "yaml.completion": true,
+    "yaml.schemaStore.url": "https://www.schemastore.org/api/json/catalog.json",
+    "yaml.schemaStore.enable": true,
+    "yaml.schemas": {
+        "**/okteto-stack.yml": "./config/okteto-stack-schema.json"
+    }
+}
