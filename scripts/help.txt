@@ -1,0 +1,3 @@
+Available commands:
+    help            Show this message
+    okteto-login    Authenicate against Okteto CLI, using an Okteto Cloud API token via $OKTETO_CLOUD_TOKEN
