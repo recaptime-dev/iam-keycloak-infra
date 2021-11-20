@@ -4,14 +4,15 @@ set -e
 set -o pipefail
 
 ROOT="$(dirname "$0")/scripts"
+export ROOT
 
 if [[ $1 == "help" ]]; then
   cat $ROOT/help.txt
 fi
 
-if [[ ! -f "$ROOT/$1" ]]; then
+if [[ ! -f "$ROOT/$1.sh" ]]; then
   echo "error: Command didn't exist. Check $ROOT if it's exist."
   exit 2
 else
-  exec "$ROOT/$1"
+  exec "$ROOT/$1.sh"
 fi
